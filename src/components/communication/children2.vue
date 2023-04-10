@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-import { defineEmits, useAttrs } from "vue";
+import { getCurrentInstance, useAttrs, onMounted, onBeforeUnmount } from "vue";
 // 默认情况下，父组件传递的，但没有被子组件解析为 props 的 attributes 绑定会被“透传”
 const attrs = useAttrs();
 console.log(attrs);
@@ -14,12 +14,23 @@ console.log(attrs.color);
 console.log(attrs.fontSize);
 
 // 事件
-setTimeout(() => {
-  let randomNum = Math.random();
-  console.log(randomNum);
-  attrs.onAddList(randomNum)
-}, 2000);
+// setTimeout(() => {
+//   let randomNum = Math.random();
+//   console.log(randomNum);
+//   attrs.onAddList(randomNum);
+// }, 2000);
 
+// 事件总线
+const cxt = getCurrentInstance();
+const bus = cxt.appContext.config.globalProperties.$bus;
+onMounted(() => {
+  bus.on("printMessage", (message) => {
+    alert(message);
+  });
+});
+onBeforeUnmount(() => {
+  bus.off("printMessage");
+});
 </script>
 <style lang="scss" scoped>
 .composition-api-composition {

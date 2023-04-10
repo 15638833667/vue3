@@ -7,14 +7,14 @@
   <!-- 生命周期 -->
   <!-- <LifeCycles></LifeCycles> -->
   <!-- <LifeCyclesComposition></LifeCyclesComposition> -->
-  <!-- <Communication :topData="state" :type="state.type" color="red" fontSize="12" @add="addToList" @addList="addToList"></Communication> -->
+  <Communication :topData="state" :type="state.type" color="red" fontSize="12" @add="addToList" @addList="addToList"></Communication>
   <!-- <Ref></Ref> -->
   <!-- <RefTemplate></RefTemplate> -->
   <!-- <ToRef></ToRef> -->
   <!-- <ToRefs></ToRefs> -->
   <!-- <Watch></Watch> -->
   <!-- <MousePosition></MousePosition> -->
-  <GetInstance></GetInstance>
+  <!-- <GetInstance></GetInstance> -->
 </template>
 <script>
 import LifeCycles from "../components/lifeCycles.vue";

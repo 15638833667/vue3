@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mitt": "^3.0.0",
     "node-sass": "^8.0.0",
     "pinia": "^2.0.32",
     "sass": "^1.61.0",

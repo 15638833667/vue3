@@ -16,10 +16,10 @@
     >
     <button @click="addToList">添加到列表</button>
   </div>
-  <!-- <Children></Children> -->
-  <!-- <Children2 v-bind="$attrs" class="wei122" style="color: #009588"></Children2> -->
+  <Children></Children>
+  <Children2 v-bind="$attrs" class="wei122" style="color: #009588"></Children2>
   
-  <Children3 v-bind="$attrs" class="wei123" style="color: #008877"></Children3>
+  <!-- <Children3 v-bind="$attrs" class="wei123" style="color: #008877"></Children3> -->
 </template>
 <script setup>
 import Children from "./children.vue";
