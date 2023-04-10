@@ -12,12 +12,6 @@ import Children from "./children.vue";
 import {
   ref,
   reactive,
-  onBeforeMount,
-  onMounted,
-  onBeforeUpdate,
-  onUpdated,
-  onBeforeUnmount,
-  onUnmounted,
 } from "vue";
 
 const ageRef = ref(30);

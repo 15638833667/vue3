@@ -9,7 +9,7 @@ import { ref, onMounted } from "vue";
 export default {
   name: "RefTemplate",
   setup() {
-    const elemRef = ref(null);
+    const elemRef = ref();
 
     onMounted(() => {
       console.log("ref template", elemRef.value.innerHTML, elemRef.value);

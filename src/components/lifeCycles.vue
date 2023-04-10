@@ -14,11 +14,6 @@ import {
 
 export default {
   name: "LifeCycles",
-
-  props: {
-    msg: String,
-  },
-
   // 等于 beforeCreate 和 created
   setup() {
     console.log("setup");

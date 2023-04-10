@@ -1,17 +1,18 @@
 <template>
   <div class="composition-api">
     <h1>This is compositionAPI</h1>
-    <h2>{{ nameRef }}</h2>
+    <h3>{{ state }}</h3>
+    <h4>{{ source }}</h4>
   </div>
   <!-- 生命周期 -->
   <!-- <LifeCycles></LifeCycles> -->
   <!-- <LifeCyclesComposition></LifeCyclesComposition> -->
-  <Communication></Communication>
-  <!-- <Watch></Watch> -->
+  <!-- <Communication :topData="state"></Communication> -->
   <!-- <Ref></Ref> -->
-  <!-- <RefTemplate></RefTemplate> -->
+  <RefTemplate></RefTemplate>
   <!-- <ToRef></ToRef> -->
   <!-- <ToRefs></ToRefs> -->
+  <!-- <Watch></Watch> -->
   <!-- <MousePosition></MousePosition> -->
 </template>
 <script>
@@ -25,7 +26,7 @@ import ToRef from "../components/toRef.vue";
 import ToRefs from "../components/toRefs.vue";
 import MousePosition from "../components/mousePosition/index.vue";
 
-import { reactive, } from "vue";
+import { reactive, toRefs } from "vue";
 
 export default {
   name: "HelloWorld",
@@ -44,9 +45,16 @@ export default {
     const state = reactive({
       type: "compositionAPI",
       source: "顶级",
+      list: [
+        { value: 1, key: "A" },
+        { value: 2, key: "B" },
+        { value: 3, key: "C" },
+      ],
     });
+    const toRefsState = toRefs(state)
     return {
       state,
+      ...toRefsState
     };
   },
 };

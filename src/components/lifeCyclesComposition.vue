@@ -10,6 +10,7 @@ import {
   onBeforeUnmount,
   onUnmounted,
 } from "vue";
+
 console.log("setup");
 
 onBeforeMount(() => {

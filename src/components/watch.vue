@@ -31,25 +31,29 @@ export default {
       console.log("state.name", state.name);
     });
     setTimeout(() => {
+      console.log("---------------------------------------");
       state.age = 25;
     }, 1500);
+
     setTimeout(() => {
+      console.log("---------------------------------------");
       state.name = "小明";
     }, 3000);
 
-    watch(
-      numberRef,
-      (newNumber, oldNumber) => {
-        console.log("ref watch", newNumber, oldNumber);
-      }
-      // {
-      //   immediate: true, // 初始化之前就监听，可选
-      // }
-    );
+    // watch(
+    //   numberRef,
+    //   (newNumber, oldNumber) => {
+    //     console.log("ref watch", newNumber, oldNumber);
+    //   },
+    //   {
+    //     immediate: true, // 初始化之前就监听，可选
+    //   }
+    // );
 
-    setTimeout(() => {
-      numberRef.value = 200;
-    }, 1500);
+    // setTimeout(() => {
+    //   console.log("---------------------------------------");
+    //   numberRef.value = 200;
+    // }, 1500);
 
     // watch(
     //   // 第一个参数，确定要监听哪个属性
@@ -63,39 +67,42 @@ export default {
     //   // 第三个参数，配置项
     //   {
     //     immediate: true, // 初始化之前就监听，可选
-    //     // deep: true // 深度监听
+    //     deep: true // 深度监听
     //   }
     // );
 
     // setTimeout(() => {
+    //   console.log("---------------------------------------");
     //   state.age = 25;
     // }, 1500);
+
     // setTimeout(() => {
+    //   console.log("---------------------------------------");
     //   state.name = "小明";
     // }, 3000);
 
-    // return {
-    //   numberRef,
-    //   ...toRefs(state),
-    // };
-
     // ref 传入对象
 
-    const nameRef = ref({ key: 3232323 });
+    // const nameRef = ref({ key: 3232323 });
 
-    console.log(nameRef.value.key);
-    setTimeout(() => {
-      nameRef.value.key = 11111;
-    }, 2000);
-    watch(
-      nameRef,
-      () => {
-        console.log(nameRef.value.key);
-      },
-      {
-        deep: true,
-      }
-    );
+    // console.log(nameRef.value.key);
+    // setTimeout(() => {
+    //   console.log("---------------------------------------");
+    //   nameRef.value.key = 11111;
+    // }, 2000);
+    // watch(
+    //   nameRef,
+    //   () => {
+    //     console.log(nameRef.value.key);
+    //   },
+    //   {
+    //     deep: true,
+    //   }
+    // );
+    return {
+      numberRef,
+      ...toRefs(state),
+    };
   },
 };
 </script>
