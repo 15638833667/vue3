@@ -1,65 +1,52 @@
 <template>
   <div class="composition-api">
     <h1>This is compositionAPI</h1>
-    <p>年龄：{{angref}}</p>
-    <p>名字：{{name}}</p>
-    <button @click="setAge">点我修改年龄</button>
+    <h2>{{ nameRef }}</h2>
   </div>
-  <Composition msg="test"/>
+  <!-- 生命周期 -->
+  <!-- <LifeCycles></LifeCycles> -->
+  <!-- <LifeCyclesComposition></LifeCyclesComposition> -->
+  <Communication></Communication>
+  <!-- <Watch></Watch> -->
+  <!-- <Ref></Ref> -->
+  <!-- <RefTemplate></RefTemplate> -->
+  <!-- <ToRef></ToRef> -->
+  <!-- <ToRefs></ToRefs> -->
+  <!-- <MousePosition></MousePosition> -->
 </template>
 <script>
-import Composition from '../components/composition.vue'
-import {
-  ref,
-  reactive,
-  toRef,
-  toRefs,
-  watch,
-  watchEffect,
-  
-  onBeforeMount,
-  onMounted,
-  onBeforeUpdate,
-  onUpdated,
-  onBeforeUnmount,
-  onUnmounted,
-} from "vue";
+import LifeCycles from "../components/lifeCycles.vue";
+import LifeCyclesComposition from "../components/lifeCyclesComposition.vue";
+import Communication from "../components/communication/index.vue";
+import Watch from "../components/watch.vue";
+import Ref from "../components/ref.vue";
+import RefTemplate from "../components/refTemplate.vue";
+import ToRef from "../components/toRef.vue";
+import ToRefs from "../components/toRefs.vue";
+import MousePosition from "../components/mousePosition/index.vue";
+
+import { reactive, } from "vue";
+
 export default {
   name: "HelloWorld",
   components: {
-    Composition
+    LifeCycles,
+    LifeCyclesComposition,
+    Watch,
+    Ref,
+    RefTemplate,
+    ToRef,
+    ToRefs,
+    MousePosition,
+    Communication,
   },
   setup() {
-    const angref = ref(30);
-    const name = reactive({
-      name: 111,
+    const state = reactive({
+      type: "compositionAPI",
+      source: "顶级",
     });
-    const setAge = function () {
-      angref.value = 20;
-    };
-    onBeforeMount(() => {
-      console.log("onBeforeMount");
-    });
-    onMounted(() => {
-      console.log("onMounted");
-    });
-    onBeforeUpdate(() => {
-      console.log("onBeforeUpdate");
-    });
-    onUpdated(() => {
-      console.log("onUpdated");
-    });
-    onBeforeUnmount(() => {
-      console.log("onBeforeUnmount");
-    });
-    onUnmounted(() => {
-      console.log("onUnmounted");
-    });
-    console.log("setup");
     return {
-      angref,
-      name,
-      setAge,
+      state,
     };
   },
 };

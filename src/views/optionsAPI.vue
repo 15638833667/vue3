@@ -20,7 +20,14 @@
 
   <script>
 import { thisExpression } from "@babel/types";
-import { onBeforeMount } from "vue";
+import {
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from "vue";
 
 export default {
   name: "home",
@@ -32,9 +39,25 @@ export default {
   },
   setup() {
     console.log("setup");
-    onBeforeMount(() => {
-      console.log("onBeforeMount");
-    });
+
+    // onBeforeMount(() => {
+    //   console.log("onBeforeMount");
+    // });
+    // onMounted(() => {
+    //   console.log("onMounted");
+    // });
+    // onBeforeUpdate(() => {
+    //   console.log("onBeforeUpdate");
+    // });
+    // onUpdated(() => {
+    //   console.log("onUpdated");
+    // });
+    // onBeforeUnmount(() => {
+    //   console.log("onBeforeUnmount");
+    // });
+    // onUnmounted(() => {
+    //   console.log("onUnmounted");
+    // });
   },
   beforeCreate() {
     console.log("创建前");
@@ -58,7 +81,7 @@ export default {
     console.log("卸载前");
   },
   unmounted() {
-    console.log("更新后");
+    console.log("卸载后");
   },
   methods: {
     handleClick() {

@@ -9,7 +9,6 @@ import { RouterLink, RouterView } from "vue-router";
     <nav>
       <RouterLink to="/">optionsAPI</RouterLink>
       <RouterLink to="/compositionAPI">compositionAPI</RouterLink>
-      <RouterLink to="/compositionAPINew">compositionAPINew</RouterLink>
     </nav>
   </div>
   <RouterView />
