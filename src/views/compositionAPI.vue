@@ -7,13 +7,14 @@
   <!-- 生命周期 -->
   <!-- <LifeCycles></LifeCycles> -->
   <!-- <LifeCyclesComposition></LifeCyclesComposition> -->
-  <Communication :topData="state" :type="state.type" color="red" fontSize="12" @add="addToList" @addList="addToList"></Communication>
+  <!-- <Communication :topData="state" :type="state.type" color="red" fontSize="12" @add="addToList" @addList="addToList"></Communication> -->
   <!-- <Ref></Ref> -->
   <!-- <RefTemplate></RefTemplate> -->
   <!-- <ToRef></ToRef> -->
   <!-- <ToRefs></ToRefs> -->
   <!-- <Watch></Watch> -->
   <!-- <MousePosition></MousePosition> -->
+  <GetInstance></GetInstance>
 </template>
 <script>
 import LifeCycles from "../components/lifeCycles.vue";
@@ -25,6 +26,7 @@ import RefTemplate from "../components/refTemplate.vue";
 import ToRef from "../components/toRef.vue";
 import ToRefs from "../components/toRefs.vue";
 import MousePosition from "../components/mousePosition/index.vue";
+import GetInstance from "../components/getInstance.vue";
 
 import { provide, reactive, ref, toRefs } from "vue";
 
@@ -40,6 +42,7 @@ export default {
     ToRefs,
     MousePosition,
     Communication,
+    GetInstance
   },
   setup() {
     const state = reactive({
