@@ -1,29 +1,76 @@
 <template>
-  <div class="composition-api">
-    <h1>组件通信</h1>
-    <p>年龄：{{ageRef}}</p>
-    <p>名字：{{state}}</p>
-    <button @click="changeState">点我修改年龄</button>
+  <h1>组件通信 - 子组件</h1>
+  <div class="from-parent">
+    <h4>父级传递的数据 - props.topData.source - {{ props.topData.source }}</h4>
+    <ul>
+      <li
+        v-for="item in props.topData.list"
+        :key="item.key"
+      >{{ item.value }}</li>
+    </ul>
   </div>
-  <Children></Children>
+  <div class="self">
+    <input
+      type="text"
+      v-model="listText"
+    >
+    <button @click="addToList">添加到列表</button>
+  </div>
+  <!-- <Children></Children> -->
+  <!-- <Children2 v-bind="$attrs" class="wei122" style="color: #009588"></Children2> -->
+  
+  <Children3 v-bind="$attrs" class="wei123" style="color: #008877"></Children3>
 </template>
 <script setup>
 import Children from "./children.vue";
-import {
-  ref,
-  reactive,
-} from "vue";
+import Children2 from "./children2.vue";
+import Children3 from "./children3.vue";
 
-const ageRef = ref(30);
-const state = reactive({
-  name: '小明',
+import { ref, useAttrs, defineProps, defineEmits } from "vue";
+
+
+const props = defineProps({
+  topData: {
+    type: Object || Array,
+    default: {} || [],
+  },
 });
-const changeState = function () {
-  ageRef.value = 20;
-  state.name = '小红'
+// console.log(props.topData);
+
+const listText = ref("");
+const addEmit = defineEmits(["add"]);
+const addToList = function () {
+  addEmit("add", listText.value);
+  listText.value = "";
 };
 
+// // 透传的属性
+// const attrs = useAttrs();
+// console.log(attrs);
 
 </script>
-<style>
+<style lang="scss" scoped>
+.from-parent {
+  padding: 10px;
+  border: 1px solid #009588;
+  border-radius: 4px;
+  h4 {
+    margin: 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+.self {
+  padding: 10px;
+  button {
+    background: #009588;
+    padding: 5px 10px;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    margin-left: 10px;
+  }
+}
 </style>

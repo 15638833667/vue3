@@ -1,15 +1,15 @@
 <template>
   <div class="composition-api">
     <h1>This is compositionAPI</h1>
-    <h3>{{ state }}</h3>
-    <h4>{{ source }}</h4>
+    <!-- <h3>{{ state }}</h3>
+    <h4>{{ source }}</h4> -->
   </div>
   <!-- 生命周期 -->
   <!-- <LifeCycles></LifeCycles> -->
   <!-- <LifeCyclesComposition></LifeCyclesComposition> -->
-  <!-- <Communication :topData="state"></Communication> -->
+  <Communication :topData="state" :type="state.type" color="red" fontSize="12" @add="addToList" @addList="addToList"></Communication>
   <!-- <Ref></Ref> -->
-  <RefTemplate></RefTemplate>
+  <!-- <RefTemplate></RefTemplate> -->
   <!-- <ToRef></ToRef> -->
   <!-- <ToRefs></ToRefs> -->
   <!-- <Watch></Watch> -->
@@ -26,7 +26,7 @@ import ToRef from "../components/toRef.vue";
 import ToRefs from "../components/toRefs.vue";
 import MousePosition from "../components/mousePosition/index.vue";
 
-import { reactive, toRefs } from "vue";
+import { provide, reactive, ref, toRefs } from "vue";
 
 export default {
   name: "HelloWorld",
@@ -46,15 +46,38 @@ export default {
       type: "compositionAPI",
       source: "顶级",
       list: [
-        { value: 1, key: "A" },
-        { value: 2, key: "B" },
-        { value: 3, key: "C" },
+        {
+          value: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          key: "A",
+        },
+        { value: "Libero omnis laboriosam, assumenda dolorem.", key: "B" },
+        { value: " Corrupti, dolorem excepturi.", key: "C" },
       ],
     });
-    const toRefsState = toRefs(state)
+    const toRefsState = toRefs(state);
+    
+    // 自定义事件
+    function addToList (event){
+      console.log(event)
+      state.list.push({
+        value: event,
+        key: event
+      })
+      console.log(state.list)
+    }
+    
+    // 依赖注入
+    const provideVal = ref('provideVal-11111111111111')
+    provide('provideVal', provideVal)
+    provide('provideStaticVal', 'provideStaticVal')
+    setTimeout(()=>{
+      provideVal.value = Math.random()
+    }, 1500)
+    
     return {
       state,
-      ...toRefsState
+      ...toRefsState,
+      addToList
     };
   },
 };

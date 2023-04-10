@@ -1,18 +1,16 @@
 <template>
   <div class="composition-api-composition">
-    <h1>子组件</h1>
+    <h2>孙子组件</h2>
+    <h4>{{ provideVal }}</h4>
+    <h4>{{ provideStaticVal }}</h4>
   </div>
 </template>
 <script setup>
-import { ref, reactive, toRef, toRefs, watch, watchEffect } from "vue";
+import { inject } from "vue";
 // console.log(props.msg)
-const ageRef = ref(30);
-const state = reactive({
-  name: 111,
-});
-const setAge = function () {
-  ageRef.value = 20;
-};
+const provideVal = inject("provideVal");
+const provideStaticVal = inject("provideStaticVal");
+
 </script>
 <style lang="scss" scoped>
 .composition-api-composition {
