@@ -1,13 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import OptionsAPI from '../views/optionsAPI.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'testComponents',
+      component: () => import('../views/testComponents.vue'),
+    },
+    {
+      path: '/optionsAPI',
       name: 'optionsAPI',
-      // component: OptionsAPI
       component: () => import('../views/optionsAPI.vue'),
     },
     {
